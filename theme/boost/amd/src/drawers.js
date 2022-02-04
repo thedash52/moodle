@@ -46,6 +46,7 @@ const SELECTORS = {
 const CLASSES = {
     SCROLLED: 'scrolled',
     SHOW: 'show',
+    HIDE: 'hideDrawer',
     NOTINITIALISED: 'not-initialized',
 };
 
@@ -439,6 +440,7 @@ export default class Drawers {
         }
 
         Aria.unhide(this.drawerNode);
+        this.drawerNode.classList.remove(CLASSES.HIDE);
         this.drawerNode.classList.add(CLASSES.SHOW);
 
         const preference = this.drawerNode.dataset.preference;
@@ -516,6 +518,7 @@ export default class Drawers {
         }
 
         Aria.hide(this.drawerNode);
+        this.drawerNode.classList.add(CLASSES.HIDE);
         this.drawerNode.classList.remove(CLASSES.SHOW);
 
         getBackdrop().then(backdrop => {
